@@ -26,5 +26,12 @@ pipeline {
                 echo "This is stage 5"
             }
         }
+        stage('Deploy Python Container') {
+            steps {
+                script {
+                    sh 'docker pull python:3.12-slim'
+                }
+            }
+        }
     }
 }

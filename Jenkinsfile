@@ -29,7 +29,11 @@ pipeline {
         stage('Deploy Python Container') {
             steps {
                 script {
-                    sh 'docker pull python:3.12-slim'
+                    sh '''
+                    apt-get update
+                    apt-get install -y docker.io
+                    docker pull python:3.12-slim
+                    '''
                 }
             }
         }

@@ -36,8 +36,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    apt-get update
-                    apt-get install -y docker.io
                     docker pull python:3.12-slim
                     '''
                 }

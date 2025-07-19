@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+  agent {
+    docker {
+      image 'jenkins/jenkins:lts'
+      args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+    }
+      
     stages {
         stage("Stage 1"){
             steps {

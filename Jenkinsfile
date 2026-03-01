@@ -57,7 +57,7 @@ pipeline {
           } else if (isDev) {
             echo "Dev deployment logic"
             env.TEST_SECRET = credentials('DEV_TEST_SECRET')
-            sh 'TEST_SECRET=$DEV_TEST_SECRET'
+            sh 'echo $TEST_SECRET'
           }
         }
       }

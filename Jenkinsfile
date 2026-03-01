@@ -49,6 +49,14 @@ pipeline {
           echo "Is main: ${isMain}"
           echo "Ends with -dev: ${isDev}"
           echo "Ends with -qa: ${isQa}"
+
+          if (isMain) {
+            echo "Production deployment logic"
+          } else if (isQa) {
+            echo "QA deployment logic"
+          } else if (isDev) {
+            echo "Dev deployment logic"
+          }
         }
       }
     }

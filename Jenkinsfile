@@ -59,6 +59,7 @@ pipeline {
             env.TEST_SECRET = credentials('DEV_TEST_SECRET')
             sh 'echo $TEST_SECRET'
             sh 'pwd'
+            sh 'echo $TEST_SECRET > newfile.txt'
           }
         }
       }

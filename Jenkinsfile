@@ -39,7 +39,12 @@ pipeline {
     stage('Print Current Branch') {
       steps {
         script {
-          echo "Current branch: ${env.BRANCH_NAME}"
+          def branch = sh(
+            script: "git rev-parse --abbrev-ref HEAD",
+            returnStdout: true
+          ).trim()
+    
+          echo "Current branch: ${branch}"
         }
       }
     }

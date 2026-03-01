@@ -36,15 +36,15 @@ pipeline {
         '''
       }
     }
-    stage('Print Current Branch') {
+    stage('Print Configured Branch') {
       steps {
         script {
-          def branch = sh(
-            script: "git rev-parse --abbrev-ref HEAD",
-            returnStdout: true
-          ).trim()
+          def branch = env.GIT_BRANCH?.replaceFirst(/^origin\//, '')
     
-          echo "Current branch: ${branch}"
+          echo "Configured branch: ${branch}"
+    
+          def isDev = branch?.endsWith("-dev")
+          echo "Ends with -dev: ${isDev}"
         }
       }
     }

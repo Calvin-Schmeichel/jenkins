@@ -36,15 +36,11 @@ pipeline {
         '''
       }
     }
-    stage('Print Current Branch') {
+    stage('Print Configured Branch') {
       steps {
         script {
-          def branch = sh(
-            script: "git symbolic-ref --short HEAD || git rev-parse --abbrev-ref HEAD",
-            returnStdout: true
-          ).trim()
-    
-          echo "Current branch: ${branch}"
+          def branch = env.GIT_BRANCH?.replaceFirst(/^origin\//, '')
+          echo "Configured branch: ${branch}"
         }
       }
     }

@@ -41,10 +41,14 @@ pipeline {
         script {
           def branch = env.GIT_BRANCH?.replaceFirst(/^origin\//, '')
     
-          echo "Configured branch: ${branch}"
+          def isMain = branch == "main"
+          def isDev  = branch?.endsWith("-dev")
+          def isQa   = branch?.endsWith("-qa")
     
-          def isDev = branch?.endsWith("-dev")
+          echo "Branch: ${branch}"
+          echo "Is main: ${isMain}"
           echo "Ends with -dev: ${isDev}"
+          echo "Ends with -qa: ${isQa}"
         }
       }
     }

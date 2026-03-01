@@ -54,9 +54,9 @@ pipeline {
             echo "Production deployment logic"
           } else if (isQa) {
             echo "QA deployment logic"
-            env.DEV_TEST_SECRET = credentials('DEV_TEST_SECRET')
           } else if (isDev) {
             echo "Dev deployment logic"
+            env.DEV_TEST_SECRET = credentials('DEV_TEST_SECRET')
           }
         }
       }

@@ -40,7 +40,11 @@ pipeline {
       steps {
         script {
           def branch = env.GIT_BRANCH?.replaceFirst(/^origin\//, '')
+    
           echo "Configured branch: ${branch}"
+    
+          def isDev = branch?.endsWith("-dev")
+          echo "Ends with -dev: ${isDev}"
         }
       }
     }

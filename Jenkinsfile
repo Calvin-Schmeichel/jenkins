@@ -40,7 +40,7 @@ pipeline {
       steps {
         script {
           def branch = sh(
-            script: "git rev-parse --abbrev-ref HEAD",
+            script: "git symbolic-ref --short HEAD || git rev-parse --abbrev-ref HEAD",
             returnStdout: true
           ).trim()
     

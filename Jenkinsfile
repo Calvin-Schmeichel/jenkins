@@ -36,5 +36,12 @@ pipeline {
         '''
       }
     }
+    stage('Print Current Branch') {
+      steps {
+        script {
+          echo "Current branch: ${env.BRANCH_NAME}"
+        }
+      }
+    }
   }
 }
